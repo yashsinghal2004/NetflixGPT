@@ -1,10 +1,12 @@
-
-import './App.css';
+import "./App.css";
+import Body from "./Components/Body";
+import Header from "./Components/Header";
 
 function App() {
   return (
     <div className="App">
-      <h1 className='font-bold text-3xl text-center'>Lets build some netflix</h1>
+      <Header />
+      <Body />
     </div>
   );
 }
