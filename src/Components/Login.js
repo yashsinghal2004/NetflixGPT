@@ -47,7 +47,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage();
+          setErrorMessage("Account already exists");
           // ..
         });
     } else {
@@ -65,7 +65,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage("User not found");
+          setErrorMessage("Account not found");
         });
     }
   };
