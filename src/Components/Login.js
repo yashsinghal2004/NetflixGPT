@@ -1,7 +1,10 @@
 import React, { useRef, useState } from "react";
 import validate from "../Utils/validate";
 import { auth } from "../Utils/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [formToggle, setFormToggle] = useState(true);
@@ -44,10 +47,26 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
+          setErrorMessage();
           // ..
         });
     } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage("User not found");
+        });
     }
   };
 
@@ -85,10 +104,10 @@ const Login = () => {
           placeholder="Password"
           className="p-4 mt-4 w-full rounded-lg font-normal"
         />
-        <p className="text-red-500 font-bold text-md my-2S">{errorMessage}</p>
+        <p className="text-red-500 font-bold text-md mt-2">{errorMessage}</p>
 
         <button
-          className="bg-red-600 py-3 my-8 w-full rounded-lg text-lg text-white"
+          className="bg-red-600 py-3 my-8 mt-4 w-full rounded-lg text-lg text-white hover:bg-red-700"
           onClick={validateform}
         >
           {formToggle ? "Sign In" : "Sign Up"}
