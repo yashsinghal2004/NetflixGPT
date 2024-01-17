@@ -44,6 +44,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+
           navigate("/browse");
           // ...
         })
@@ -65,7 +66,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/");
+          navigate("/browse");
 
           // ...
         })
