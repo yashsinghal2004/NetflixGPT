@@ -7,12 +7,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
 
 const Login = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formToggle, setFormToggle] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -64,7 +64,7 @@ const Login = () => {
                   photoURL: photoURL,
                 }),
               );
-              navigate("/browse");
+              //navigate("/browse");
               // ...
             })
             .catch((error) => {
@@ -92,7 +92,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+          //navigate("/browse");
 
           // ...
         })
