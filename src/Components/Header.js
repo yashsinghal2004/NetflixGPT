@@ -2,7 +2,9 @@ import React from "react";
 import { auth } from "../Utils/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const signOutToggle = () => {
     signOut(auth)
@@ -19,11 +21,18 @@ const Header = () => {
         className="  w-48 "
       />
 
-      <div className=" ">
-        <button className="font-bold text-red-500 " onClick={signOutToggle}>
-          Sign Out
-        </button>
-      </div>
+      {user && (
+        <div className=" ">
+          <img
+            src={user.photoURL}
+            alt="profile-logo"
+            className="w-12 h-12 rounded-full"
+          />
+          <button className="font-bold text-red-500 " onClick={signOutToggle}>
+            Sign Out
+          </button>
+        </div>
+      )}
     </div>
   );
 };
