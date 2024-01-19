@@ -20,15 +20,15 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
-        // const { uid, email, displayName, photoURL } = user;
-        // dispatch(
-        //   addUser({
-        //     uid: uid,
-        //     email: email,
-        //     displayName: displayName,
-        //     photoURL: photoURL,
-        //   }),
-        // );
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          }),
+        );
         navigate("/browse");
         // ...
       } else {
@@ -41,7 +41,7 @@ const Header = () => {
         unsubscribe();
       };
     });
-  });
+  }, []);
   return (
     <div className="absolute px-4 py-2 bg-gradient-to-b from-black z-20 flex w-full justify-between ">
       <img
@@ -49,7 +49,6 @@ const Header = () => {
         alt="netflix-logo"
         className="  w-48 "
       />
-
       {user && (
         <div className=" ">
           <img
