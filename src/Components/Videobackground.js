@@ -3,13 +3,15 @@ import { useDispatch } from "react-redux";
 import { options } from "../Utils/constants";
 import { addTrailer } from "../Utils/moviesSlice";
 import { useSelector } from "react-redux";
-const Videobackground = () => {
+const Videobackground = ({ movieid }) => {
   const trailerfromstore = useSelector((store) => store?.movies?.Trailer);
 
   const dispatch = useDispatch();
   const fetchTrailer = async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/955916/videos?language=en-US",
+      "https://api.themoviedb.org/3/movie/" +
+        movieid +
+        "/videos?language=en-US",
       options,
     );
     const json = await data.json();
@@ -27,13 +29,14 @@ const Videobackground = () => {
   //console.log(trailerfromstore.key);
 
   return (
-    <div>
+    <div className="">
       <iframe
-        className="w-full h-screen"
+        className="w-screen aspect-video hover:bg-opacity-80"
         src={
           "https://www.youtube.com/embed/" +
           trailerfromstore?.key +
-          "?si=G00legvSKpkov81o"
+          "?si=G00legvSKpkov81o" +
+          "&autoplay=1&mute=1"
         }
         title="YouTube video player"
         frameBorder="0"
