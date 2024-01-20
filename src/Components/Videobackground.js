@@ -29,7 +29,7 @@ const Videobackground = ({ movieid }) => {
   //console.log(trailerfromstore.key);
 
   return (
-    <div className="">
+    <div className="w-screen aspect-[16/9]">
       <iframe
         className="w-screen aspect-video hover:bg-opacity-80"
         src={
