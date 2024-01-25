@@ -5,17 +5,24 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
 import usePopular from "../Hooks/usePopular";
+import GptSearch from "./GptSearch";
 
 const Browse = () => {
   useNowPlaying();
   usePopular();
+  const Searchgpt = useSelector((store) => store?.gpt?.Searchgpt);
 
   return (
     <div>
       <Header />
-
-      <MainContainer />
-      <SecondaryContainer />
+      {Searchgpt ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };

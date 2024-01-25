@@ -5,10 +5,11 @@ const gptSlice = createSlice({
     Searchgpt: false,
   },
   reducers: {
-    ChangeSearchState: (state) => {
+    ChangeSearchState: (state, action) => {
       state.Searchgpt = !state.Searchgpt;
     },
   },
 });
-export const { ChangeSearchState } = gptSlice;
+
+export const { ChangeSearchState } = gptSlice.actions;
 export default gptSlice.reducer;

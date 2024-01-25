@@ -8,21 +8,12 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { ChangeSearchState } from "../Utils/gptSlice";
-import GptSearch from "./GptSearch";
-import { Searchgpt } from "../Utils/gptSlice";
+
 const Header = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const Searchgpt = useSelector((store) => store.gpt.Searchgpt);
-
-  const SearchClickOrNot = () => {
-    dispatch(ChangeSearchState());
-    if (Searchgpt) {
-      <GptSearch />;
-    }
-  };
   const signOutToggle = () => {
     signOut(auth)
       .then(() => {})
@@ -54,6 +45,11 @@ const Header = () => {
       };
     });
   }, []);
+
+  const SearchClickOrNot = () => {
+    dispatch(ChangeSearchState());
+  };
+
   return (
     <div className="absolute px-4 bg-gradient-to-b from-black z-50 flex w-full justify-between">
       <img
