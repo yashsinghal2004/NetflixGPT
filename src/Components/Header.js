@@ -61,7 +61,7 @@ const Header = () => {
         <div className="">
           <div className=" mt-3 flex ">
             <button
-              className="bg-red-600 mr-6 rounded-lg p-2 text-white"
+              className=" mr-6 rounded-lg p-2 text-white hover:bg-opacity-10 bg-gradient-to-b from-black"
               onClick={SearchClickOrNot}
             >
               GptSearch
