@@ -10,6 +10,7 @@ import {
 //import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
+import { NETFLIX_BG } from "../Utils/constants";
 
 const Login = () => {
   //const navigate = useNavigate();
@@ -108,10 +109,7 @@ const Login = () => {
     <div className="">
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/d3c4e455-f0bf-4003-b7cd-511dda6da82a/IN-en-20240108-popsignuptwoweeks-perspective_alpha_website_small.jpg"
-          alt="img"
-        />
+        <img src={NETFLIX_BG} alt="img" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
