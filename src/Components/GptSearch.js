@@ -3,10 +3,20 @@ import { NETFLIX_BG } from "../Utils/constants";
 import lang from "../Utils/languageConstants";
 import { useRef } from "react";
 import openai from "../Utils/openai";
+import { options } from "../Utils/constants";
 const GptSearch = () => {
   const language = useSelector((store) => store.config.language);
 
   const Searchtext = useRef(null);
+
+  const SearchTMDBMovies = async (movie) => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/search/movie?query=ready&include_adult=false&language=en-US&page=1",
+      options,
+    );
+    const json = await data.json();
+    return json.results;
+  };
 
   const SearchFromGpt = async () => {
     console.log(Searchtext.current.value);
@@ -19,7 +29,15 @@ const GptSearch = () => {
       messages: [{ role: "user", content: Gptquery }],
       model: "gpt-3.5-turbo",
     });
-    console.log(GptResults);
+    //"gadar,raaj,ready,shershaah,kgf2,koi mil gaya"
+    console.log(GptResults.choices[0]?.message?.content);
+
+    //["gadar","ready","shershaah","kgf2","koi mil gaya"]
+    const getMovies = GptResults.choices[0]?.message?.content.split(",");
+    const MoviesPromises = getMovies.map((movie) => SearchTMDBMovies(movie)); //return promises of movies
+
+    const MoviesArray = await Promise.all(MoviesPromises); //return array of movies
+    console.log(MoviesArray);
   };
   return (
     <div className="">

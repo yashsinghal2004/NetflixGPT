@@ -22,4 +22,4 @@ export const SUPPORTED_LANG = [
   { identifier: "chinese", name: "chinese" },
 ];
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "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";
