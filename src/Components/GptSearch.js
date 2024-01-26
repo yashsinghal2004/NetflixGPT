@@ -2,13 +2,24 @@ import { useSelector } from "react-redux";
 import { NETFLIX_BG } from "../Utils/constants";
 import lang from "../Utils/languageConstants";
 import { useRef } from "react";
+import openai from "../Utils/openai";
 const GptSearch = () => {
   const language = useSelector((store) => store.config.language);
 
   const Searchtext = useRef(null);
 
-  const SearchFromGpt = () => {
+  const SearchFromGpt = async () => {
     console.log(Searchtext.current.value);
+    const Gptquery =
+      "Act as a movie Recommendation system and suggest some movies for the query : " +
+      Searchtext.current.value +
+      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Ready, Shershaah, KGF2, Koi Mil Gaya";
+
+    const GptResults = await openai.chat.completions.create({
+      messages: [{ role: "user", content: Gptquery }],
+      model: "gpt-3.5-turbo",
+    });
+    console.log(GptResults);
   };
   return (
     <div className="">
