@@ -10,7 +10,7 @@ import GptSearch from "./GptSearch";
 const Browse = () => {
   useNowPlaying();
   usePopular();
-  const Searchgpt = useSelector((store) => store?.gpt?.Searchgpt);
+  const Searchgpt = useSelector((store) => store.gpt.Searchgpt);
 
   return (
     <div>

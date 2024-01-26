@@ -8,11 +8,15 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { ChangeSearchState } from "../Utils/gptSlice";
+import { SUPPORTED_LANG } from "../Utils/constants";
+import { ChangeLanguage } from "../Utils/configSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const Searchgpt = useSelector((store) => store.gpt.Searchgpt);
 
   const signOutToggle = () => {
     signOut(auth)
@@ -50,6 +54,10 @@ const Header = () => {
     dispatch(ChangeSearchState());
   };
 
+  const Changelanguageinstore = (event) => {
+    dispatch(ChangeLanguage(event.target.value));
+  };
+
   return (
     <div className="absolute px-4 bg-gradient-to-b from-black z-50 flex w-full justify-between">
       <img
@@ -59,22 +67,35 @@ const Header = () => {
       />
       {user && (
         <div className="">
-          <div className=" mt-3 flex ">
+          <div className=" mt-3 flex justify-between">
+            {Searchgpt && (
+              <select
+                className="bg-black text-white m-2  "
+                onChange={Changelanguageinstore}
+              >
+                {SUPPORTED_LANG.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            )}
+
             <button
-              className=" mr-6 rounded-lg p-2 text-white hover:bg-opacity-10 bg-gradient-to-b from-black"
+              className=" rounded-lg p-2 text-white hover:bg-opacity-10 bg-gradient-to-b from-black"
               onClick={SearchClickOrNot}
             >
-              GptSearch
+              {Searchgpt ? "Home" : "GptSearch"}
             </button>
 
             <img
               src={user.photoURL}
               alt="profile-logo"
-              className="w-12 h-12 rounded-full mr-4"
+              className="w-12 h-12 rounded-full justify-between"
             />
           </div>
           <button
-            className="font-bold text-red-500 ml-[60%]"
+            className="font-bold text-red-500 ml-52"
             onClick={signOutToggle}
           >
             Sign Out
