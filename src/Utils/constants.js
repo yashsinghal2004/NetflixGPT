@@ -21,3 +21,5 @@ export const SUPPORTED_LANG = [
   { identifier: "korean", name: "korean" },
   { identifier: "chinese", name: "chinese" },
 ];
+
+export const OPENAI_KEY = "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";

@@ -12,7 +12,7 @@ const useNowPlaying = () => {
     );
 
     const json = await data.json();
-    console.log(json?.results);
+    //console.log(json?.results);
     dispatch(addNowPlaying(json?.results));
   };
   useEffect(() => {

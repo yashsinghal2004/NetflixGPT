@@ -15,10 +15,10 @@ const Videobackground = ({ movieid }) => {
       options,
     );
     const json = await data.json();
-    console.log(json);
+    //console.log(json);
     const Trailer = (json?.results).filter((video) => video.type === "Trailer");
     const MainTrailer = Trailer.length ? Trailer[0] : json.results[0];
-    console.log(MainTrailer);
+    //console.log(MainTrailer);
     dispatch(addTrailer(MainTrailer));
   };
 
