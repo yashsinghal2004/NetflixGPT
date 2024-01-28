@@ -3,7 +3,7 @@ export const options = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODFjZTg1MjI0OTE3YmU4NGE3MzBiNjhlZGNiM2U5YyIsInN1YiI6IjY1YTkwMjlhNTVjMWY0MDEyYjg5ZTk5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LqPLLmq3_u99F1XC4-xs0ZxwuQjfHKzZn38hEudaGzU",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODFjZTg1MjI0OTE3YmU4NGE3MzBiNjhlZGNiM2U5YyIsInN1YiI6IjY1YTkwMjlhNTVjMWY0MDEyYjg5ZTk5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LqPLLmq3_u99F1XC4-xs0ZxwuQjfHKzZn38hEudaGzU'",
   },
 };
 export const POSTER_URL = "https://image.tmdb.org/t/p/w780";
@@ -22,4 +22,5 @@ export const SUPPORTED_LANG = [
   { identifier: "chinese", name: "chinese" },
 ];
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+//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

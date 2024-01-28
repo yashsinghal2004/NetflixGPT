@@ -1,17 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NETFLIX_BG } from "../Utils/constants";
 import lang from "../Utils/languageConstants";
 import { useRef } from "react";
 import openai from "../Utils/openai";
 import { options } from "../Utils/constants";
+import { addGptResult } from "../Utils/gptSlice";
+import GptMovieSuggestions from "./GptMovieSuggestions";
 const GptSearch = () => {
+  const dispatch = useDispatch();
+
   const language = useSelector((store) => store.config.language);
 
   const Searchtext = useRef(null);
 
   const SearchTMDBMovies = async (movie) => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/search/movie?query=ready&include_adult=false&language=en-US&page=1",
+      "https://api.themoviedb.org/3/search/movie?query=" +
+        movie +
+        "&include_adult=false&language=en-US&page=1",
       options,
     );
     const json = await data.json();
@@ -36,15 +42,18 @@ const GptSearch = () => {
     const getMovies = GptResults.choices[0]?.message?.content.split(",");
     const MoviesPromises = getMovies.map((movie) => SearchTMDBMovies(movie)); //return promises of movies
 
-    const MoviesArray = await Promise.all(MoviesPromises); //return array of movies
-    console.log(MoviesArray);
+    const moviesArray = await Promise.all(MoviesPromises); //return array of movies
+    console.log(moviesArray);
+    dispatch(
+      addGptResult({ GptMovieNames: getMovies, TmdbResults: moviesArray }),
+    );
   };
   return (
     <div className="">
-      <img src={NETFLIX_BG} alt="background" className="absolute" />
-      <div className="absolute bg-white bg-opacity-40 w-8/12  my-40 mx-auto left-0 right-0 rounded-lg ">
+      <img src={NETFLIX_BG} alt="background" className="fixed" />
+      <div className=" absolute z-10 px-full  bg-white w-7/12 my-36 mx-auto left-0 right-0 rounded-lg bg-opacity-50 ">
         <form
-          className=" bg-black bg-opacity-10   rounded-lg  flex m-4 "
+          className=" bg-black bg-opacity-10  rounded-lg  flex m-4 "
           onSubmit={(e) => e.preventDefault()}
         >
           <input
@@ -62,6 +71,7 @@ const GptSearch = () => {
           </button>
         </form>
       </div>
+      <GptMovieSuggestions />
     </div>
   );
 };
