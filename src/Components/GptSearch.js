@@ -36,10 +36,16 @@ const GptSearch = () => {
       model: "gpt-3.5-turbo",
     });
     //"gadar,raaj,ready,shershaah,kgf2,koi mil gaya"
-    console.log(GptResults.choices[0]?.message?.content);
+    console.log(
+      GptResults.choices[0]?.message?.content.trim().replace(/,\s/g, ","),
+    );
 
     //["gadar","ready","shershaah","kgf2","koi mil gaya"]
-    const getMovies = GptResults.choices[0]?.message?.content.split(",");
+    const getMovies = GptResults.choices[0]?.message?.content
+      .trim()
+      .replace(/,\s/g, ",")
+      .split(",");
+
     const MoviesPromises = getMovies.map((movie) => SearchTMDBMovies(movie)); //return promises of movies
 
     const moviesArray = await Promise.all(MoviesPromises); //return array of movies
