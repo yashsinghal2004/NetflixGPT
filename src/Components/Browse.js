@@ -5,7 +5,7 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
 import usePopular from "../Hooks/usePopular";
-import GptSearch from "./GptSearch";
+import Gpt from "./Gpt";
 
 const Browse = () => {
   useNowPlaying();
@@ -16,7 +16,7 @@ const Browse = () => {
     <div>
       <Header />
       {Searchgpt ? (
-        <GptSearch />
+        <Gpt />
       ) : (
         <>
           <MainContainer />

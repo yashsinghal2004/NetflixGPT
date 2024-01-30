@@ -56,10 +56,9 @@ const GptSearch = () => {
   };
   return (
     <div className="">
-      <img src={NETFLIX_BG} alt="background" className="fixed" />
-      <div className=" absolute z-10 px-full  bg-white w-7/12 my-36 mx-auto left-0 right-0 rounded-lg bg-opacity-50 ">
+      <div className=" absolute z-10  bg-white w-10/12 md:w-7/12 my-36 mx-auto left-0 right-0 rounded-lg bg-opacity-50 ">
         <form
-          className=" bg-black bg-opacity-10  rounded-lg  flex m-4 "
+          className=" bg-black bg-opacity-10  rounded-lg  md:flex m-4 "
           onSubmit={(e) => e.preventDefault()}
         >
           <input
@@ -70,14 +69,13 @@ const GptSearch = () => {
           />
           <button
             type="submit"
-            className="bg-red-600 text-white rounded-lg px-8 ml-3"
+            className="bg-red-600 text-white rounded-lg px-8 ml-[30%] mt-4 p-4  md:mt-0 md:ml-3"
             onClick={SearchFromGpt}
           >
             {lang[language].search}
           </button>
         </form>
       </div>
-      <GptMovieSuggestions />
     </div>
   );
 };

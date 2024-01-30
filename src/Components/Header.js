@@ -59,15 +59,15 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px-4 bg-gradient-to-b from-black z-50 flex w-full justify-between">
+    <div className="absolute px-4 bg-gradient-to-b from-black z-50 flex flex-col md:flex-row w-full justify-between  ">
       <img
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="netflix-logo"
-        className="  w-40 "
+        className="  w-40 mx-auto md:mx-0"
       />
       {user && (
         <div className="">
-          <div className=" mt-3 flex justify-between">
+          <div className="  flex justify-between">
             {Searchgpt && (
               <select
                 className="bg-black text-white m-2  "
@@ -95,7 +95,7 @@ const Header = () => {
             />
           </div>
           <button
-            className="font-bold text-red-500 ml-52"
+            className="font-bold text-red-500 bg-black ml-[80%] md:ml-52"
             onClick={signOutToggle}
           >
             Sign Out
