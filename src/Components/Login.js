@@ -109,11 +109,15 @@ const Login = () => {
     <div className="">
       <Header />
       <div className="absolute">
-        <img src={NETFLIX_BG} alt="img" />
+        <img
+          src={NETFLIX_BG}
+          alt="img"
+          className="h-screen md:h-full object-cover"
+        />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute px-14 py-10 bg-black w-4/12 my-36 mx-auto left-0 right-0 rounded-lg bg-opacity-80"
+        className="absolute px-14 py-10 bg-black w-10/12 md:w-4/12 my-36 mx-auto left-0 right-0 rounded-lg bg-opacity-80"
       >
         <div className="font-bold text-white text-3xl py-4 ">
           {formToggle ? "Sign In" : "Sign Up"}{" "}
