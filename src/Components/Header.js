@@ -10,6 +10,8 @@ import { addUser, removeUser } from "../Utils/userSlice";
 import { ChangeSearchState } from "../Utils/gptSlice";
 import { SUPPORTED_LANG } from "../Utils/constants";
 import { ChangeLanguage } from "../Utils/configSlice";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -64,6 +66,7 @@ const Header = () => {
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="netflix-logo"
         className="  w-40 mx-auto md:mx-0"
+        onClick={SearchClickOrNot}
       />
       {user && (
         <div className="">
@@ -95,7 +98,7 @@ const Header = () => {
             />
           </div>
           <button
-            className="font-bold text-red-500 bg-black ml-[80%] md:ml-52"
+            className="font-bold text-red-500 text-sm bg-black ml-[85%] md:ml-52 "
             onClick={signOutToggle}
           >
             Sign Out
