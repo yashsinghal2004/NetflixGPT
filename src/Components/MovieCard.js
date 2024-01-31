@@ -5,7 +5,7 @@ const MovieCard = ({ PosterPath }) => {
     return;
   }
   return (
-    <div className="w-36 pl-3 ">
+    <div className="w-24 md:w-36 pl-3 ">
       <div className="">
         <img
           src={POSTER_URL + PosterPath}
