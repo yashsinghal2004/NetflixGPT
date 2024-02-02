@@ -78,9 +78,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(
-            errorCode + " " + errorMessage + " " + "Account already exists",
-          );
+          setErrorMessage("Account already exists");
           // ..
         });
     } else {
