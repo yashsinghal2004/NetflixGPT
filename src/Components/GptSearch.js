@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NETFLIX_BG } from "../Utils/constants";
+
 import lang from "../Utils/languageConstants";
 import { useRef } from "react";
 import openai from "../Utils/openai";
 import { options } from "../Utils/constants";
 import { addGptResult } from "../Utils/gptSlice";
-import GptMovieSuggestions from "./GptMovieSuggestions";
+
 const GptSearch = () => {
   const dispatch = useDispatch();
 
