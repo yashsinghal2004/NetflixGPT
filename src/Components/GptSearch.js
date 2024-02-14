@@ -75,6 +75,10 @@ const GptSearch = () => {
             {lang[language].search}
           </button>
         </form>
+        <p className=" text-red-500 font-bold bg-white">
+          {" "}
+          Note : Gpt APIs will not work for now.
+        </p>
       </div>
     </div>
   );
