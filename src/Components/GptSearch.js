@@ -69,13 +69,13 @@ const GptSearch = () => {
           />
           <button
             type="submit"
-            className="bg-red-600 text-white rounded-lg px-8 ml-[30%] mt-4 p-4  md:mt-0 md:ml-3"
+            className="bg-red-600 text-white rounded-lg px-8 ml-[30%] mt-4 p-4  md:mt-0 md:ml-3 hover:bg-red-500"
             onClick={SearchFromGpt}
           >
             {lang[language].search}
           </button>
         </form>
-        <p className=" text-red-500 font-bold bg-white">
+        <p className=" text-red-600 font-bold bg-white">
           {" "}
           Note : Gpt APIs will not work for now.
         </p>
